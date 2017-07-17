@@ -13,6 +13,7 @@ group :development do
 end
 
 gem 'foundation-rails'
+gem 'dotenv'
 
 group :development, :test do
   gem 'capybara'
@@ -29,6 +30,10 @@ end
 
 group :production do
   gem 'rails_12factor'
+end
+
+group :test do
+  gem 'coveralls', require: false
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
