@@ -13,6 +13,7 @@ group :development do
 end
 
 gem 'foundation-rails'
+gem 'dotenv'
 
 group :development, :test do
   gem 'capybara'
