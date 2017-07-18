@@ -9,6 +9,11 @@
   </head>
 
   <body>
+    <nav>
+      <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

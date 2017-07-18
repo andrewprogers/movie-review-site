@@ -14,6 +14,7 @@ end
 
 gem 'foundation-rails'
 gem 'dotenv'
+gem 'devise'
 
 group :development, :test do
   gem 'capybara'
