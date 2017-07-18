@@ -10,7 +10,14 @@
 
   <body>
     <nav>
-      <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+      <ul>
+        <% if user_signed_in? %>
+          <li>Welcome <%= current_user.username %>!</li>
+        <% else %>
+          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li><%= link_to 'Sign In', new_user_session_path %></li>
+        <% end %>
+      </ul>
     </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

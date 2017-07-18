@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "User Signs Up" do
-#   As a prospective user
+# As a prospective user
 # I want to be able to sign up for an account
 # So that I can post movies to be reviewed and post reviews
 #
@@ -21,8 +21,6 @@ feature "User Signs Up" do
     expect(page).to have_content("Password")
     expect(page).to have_content("First Name")
     expect(page).to have_content("Last Name")
-
-
   end
 
   scenario "User fills in form successfully" do
@@ -65,7 +63,6 @@ feature "User Signs Up" do
     click_button("Sign Up")
     expect(page).to have_content("error")
     expect(page).to have_content("Password confirmation doesn't match Password")
-
     expect(page).to_not have_content("Welcome! You have signed up successfully.")
   end
 
