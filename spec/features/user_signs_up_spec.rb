@@ -35,8 +35,8 @@ feature "User Signs Up" do
     fill_in("First Name", with: "Sathvik")
     fill_in("Last Name", with: "Sudireddy")
     click_button("Sign Up")
-    expect(page).to_not have_content("Error")
-    expect(page).to have_content("You Have Successfully Signed Up!")
+    expect(page).to_not have_content("error")
+    expect(page).to have_content("Welcome! You have signed up successfully.")
   end
 
   scenario "User does not provide all information" do
@@ -48,9 +48,9 @@ feature "User Signs Up" do
     fill_in("First Name", with: "Sathvik")
     fill_in("Last Name", with: "Sudireddy")
     click_button("Sign Up")
-    expect(page).to have_content("Error")
+    expect(page).to have_content("error")
     expect(page).to have_content("Username can't be blank")
-    expect(page).to_not have_content("You Have Successfully Signed Up!")
+    expect(page).to_not have_content("Welcome! You have signed up successfully.")
   end
 
   scenario "Password Confirmation does not match" do
@@ -63,10 +63,10 @@ feature "User Signs Up" do
     fill_in("First Name", with: "Sathvik")
     fill_in("Last Name", with: "Sudireddy")
     click_button("Sign Up")
-    expect(page).to have_content("Error")
-    expect(page).to have_content("Password Confirmation Must Match Your Password")
+    expect(page).to have_content("error")
+    expect(page).to have_content("Password confirmation doesn't match Password")
 
-    expect(page).to_not have_content("You Have Successfully Signed Up!")
+    expect(page).to_not have_content("Welcome! You have signed up successfully.")
   end
 
 
