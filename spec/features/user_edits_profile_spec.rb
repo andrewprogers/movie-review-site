@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "User Edits Profile" do 
+feature "User Edits Profile" do
   let!(:user) { FactoryGirl.create(:user) }
 
   before(:each) do
