@@ -14,15 +14,15 @@ feature "Signed in User can add a new movie" do
 # - If I do not supply a movie name, I receive an error message.
 # - If an movie with that name is already in the database, I receive an error message."
 
-let!(:user) { FactoryGirl.create(:user) }
+  let!(:user) { FactoryGirl.create(:user) }
 
-before(:each) do
-  visit(root_path)
-  click_link 'Sign In'
-  fill_in("Email", with: user.email)
-  fill_in("Password", with: user.password)
-  click_button("Log in")
-end
+  before(:each) do
+    visit(root_path)
+    click_link 'Sign In'
+    fill_in("Email", with: user.email)
+    fill_in("Password", with: user.password)
+    click_button("Log in")
+  end
 
   scenario "user visits new movie page" do
     click_link("Add Movie")

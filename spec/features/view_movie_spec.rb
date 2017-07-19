@@ -13,6 +13,6 @@ feature "View Movie" do
     click_link "Guardians of the Galaxy"
 
     expect(page).to have_content guardians_of_the_galaxy.name
-  	expect(page).to have_content guardians_of_the_galaxy.description
+    expect(page).to have_content guardians_of_the_galaxy.description
   end
 end

@@ -22,8 +22,6 @@ feature "User can see list of movies" do
   # - I should not be logged into the site
   # - I should be able to see a list of all movies that have been submitted
   # - I should get to this list form the site index
-
-
   scenario "shows visitor list of movies" do
     guardians_of_the_galaxy = Movie.create(name: 'Guardians of the Galaxy', description: "A story")
     visit movies_path
