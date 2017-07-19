@@ -12,3 +12,7 @@
     <%=    f.text_field :description%>
     <%=    f.submit "Update Movie" %>
 <%end%>
+
+<h3>Delete Movie</h3>
+
+<p><%= button_to "Delete Movie", @movie, data: { confirm: "Are you sure?" }, method: :delete %></p>

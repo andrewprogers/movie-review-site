@@ -1,4 +1,3 @@
-
 require 'rails_helper'
 
 feature "Signed in User can edit a movie" do
