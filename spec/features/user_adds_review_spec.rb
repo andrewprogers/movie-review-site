@@ -1,16 +1,6 @@
 require 'rails_helper'
 
 feature 'user adds a new review' do
-# As an authenticated user
-# I want to be able to review a movie
-# So that I can let others know what I thought
-#
-# Acceptance Criteria:
-#
-# User should be on a movie show page and click a link to add a review
-# User must be signed in
-# The review must have a star rating, and submission without this should result in errors
-# The review may optionally have a text body
   let!(:movie1) { FactoryGirl.create(:movie) }
   let!(:user1) { FactoryGirl.create(:user) }
 
