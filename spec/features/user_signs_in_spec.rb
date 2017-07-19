@@ -1,20 +1,6 @@
 require 'rails_helper'
 
 feature "User Signs In" do
-  # As an unauthenticated user
-  # I want to be able to sign in
-  # So that I can post items and review them
-  #
-  # Acceptance Criteria:
-  # If a user is not signed in, they should see a link to sign in on every page
-  # Clicking on the sign in link will take them to a form to sign in
-  # They will be required to fill in information for a valid user
-  # If they supply invalid credentials, they should be given an error message and
-  # remain on the same page
-  # If they supply valid credentials, they should be given a notice that they
-  # have successfully signed in
-  # Once signed in, their username should be displayed on the banner.
-
   scenario "User views the sign in page" do
     visit(root_path)
     click_link 'Sign In'
