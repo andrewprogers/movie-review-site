@@ -7,12 +7,12 @@
 # - I should get to this detail page by clicking on the name of the movie
 
 feature "View Movie" do
-  guardians_of_the_galaxy = Movie.find_or_create_by(name: 'Guardians of the Galaxy', description: "A story")
+  guardians = Movie.find_or_create_by(name: 'Guardians of the Galaxy', description: "A story")
   scenario "shows individual movie page" do
     visit movies_path
     click_link "Guardians of the Galaxy"
 
-    expect(page).to have_content guardians_of_the_galaxy.name
-    expect(page).to have_content guardians_of_the_galaxy.description
+    expect(page).to have_content guardians.name
+    expect(page).to have_content guardians.description
   end
 end
