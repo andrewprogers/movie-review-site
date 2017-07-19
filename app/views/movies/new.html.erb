@@ -1,0 +1,14 @@
+<h1>Add New Movie</h1>
+
+<%if @movie.errors.any?%>
+    <%@movie.errors.full_messages.each do |msg|%>
+    <div> <%=msg%></div>
+    <%end%>
+<%end%>
+<%= form_for @movie do |f| %>
+    <%=    f.label :name%>
+    <%=    f.text_field :name%>
+    <%=    f.label :description%>
+    <%=    f.text_field :description%>
+    <%=    f.submit "Add Movie" %>
+<%end%>
