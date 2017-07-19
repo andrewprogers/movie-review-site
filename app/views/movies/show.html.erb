@@ -1,8 +1,25 @@
 <%= flash[:notice] %>
 <h1><%=@movie.name %></h1>
+
 <p>Description: <%= @movie.description%></p>
 <% if user_signed_in? %>
   <% if (@movie.user == current_user) %>
-  <p><%= link_to "Edit Movie", edit_movie_path %></p> 
+  <p><%= link_to "Edit Movie", edit_movie_path %></p>
   <% end %>
 <% end %>
+
+
+<div class="reviews">
+  <% if @reviews.length > 0 %>
+    <h3>Reviews</h3>
+    <ul>
+      <% @reviews.each do |review| %>
+      <p>
+        <b>Rating: <%= review.rating %> - <%= review.user.username %></b>
+        </br>
+        <%= review.body %>
+      </p>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

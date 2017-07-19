@@ -24,7 +24,8 @@ feature "User can see list of movies" do
   # - I should get to this list form the site index
   scenario "shows visitor list of movies" do
     user = FactoryGirl.create(:user)
-    guardians_of_the_galaxy = Movie.create(name: 'Guardians of the Galaxy', description: "A story", user: user)
+    guardians_of_the_galaxy = Movie.create(name: 'Guardians of the Galaxy',
+      description: "A story", user: user)
     visit movies_path
     expect(page).to have_text("Movies")
     expect(page).to have_content(guardians_of_the_galaxy.name)
@@ -32,7 +33,8 @@ feature "User can see list of movies" do
 
   scenario "signed in user views movies list" do
     user = FactoryGirl.create(:user)
-    guardians_of_the_galaxy = Movie.create(name: 'Guardians of the Galaxy', description: "A story", user: user)
+    guardians_of_the_galaxy = Movie.create(name: 'Guardians of the Galaxy',
+      description: "A story", user: user)
     visit(root_path)
     click_link 'Sign In'
     fill_in("Email", with: user.email)
