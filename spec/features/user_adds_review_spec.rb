@@ -48,6 +48,6 @@ feature 'user adds a new review' do
     click_button("Add Review")
 
     expect(page).to_not have_content("Rating:")
-    expect(page).to_not have_content("This was okay")
+    expect(page).to have_content("can't be blank")
   end
 end
