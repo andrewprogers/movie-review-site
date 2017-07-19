@@ -5,5 +5,4 @@ RSpec.describe Review, type: :model do
   it { should_not have_valid(:rating).when('', nil, 0, 8, 3.5, -1) }
 
   it { should have_valid(:body).when('this is a great movie', '') }
-  end
 end
