@@ -1,5 +1,6 @@
 <%= flash[:notice] %>
 <h1><%=@movie.name %></h1>
+<p><%= link_to "Edit Movie", edit_movie_path %></p>
 <p>Description: <%= @movie.description%></p>
 
 <div class="reviews">
