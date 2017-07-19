@@ -1,17 +1,6 @@
 require 'rails_helper'
 
 feature "User Signs Up" do
-# As a prospective user
-# I want to be able to sign up for an account
-# So that I can post movies to be reviewed and post reviews
-#
-# Acceptance Criteria:
-# If a user is not signed in, they should see a link to sign up on every page
-# Clicking on the signup link should take them to a form for a new user
-# They will be required to input a username, password, and an email address
-# If the form is not filled out completely, the user will be shown one or more errors
-# If the form is filled out correctly, the user will be informed that they have successfully signed up
-
   scenario "Unauthenticated user can view sign up form" do
     visit root_path
     click_link "Sign Up"
