@@ -2,16 +2,16 @@ require 'rails_helper'
 
 feature "Signed in User can delete a movie" do
 
-# Delete
-# As an authenticated user
-# I want to delete an item
-# So that no one can review it
-# Acceptance Criteria
-# - I should be logged to the site
-# - I should be able to view the details of a movie
-# - I should get to this detail page by clicking on the name of the movie
-# - I should be able to delete the movie and all associated reviews by clicking the 'Delete' button
-# - Upon completion of the delete I should receive a confirmation message that the movie has been deleted and redirect the main movies page
+  # Delete
+  # As an authenticated user
+  # I want to delete an item
+  # So that no one can review it
+  # Acceptance Criteria
+  # - I should be logged to the site
+  # - I should be able to view the details of a movie
+  # - I should get to this detail page by clicking on the name of the movie
+  # - I should be able to delete the movie and all associated reviews by clicking the 'Delete' button
+  # - Upon completion of the delete I should receive a confirmation message that the movie has been deleted and redirect the main movies page
   let!(:user) { FactoryGirl.create(:user) }
 
   before(:each) do
@@ -36,8 +36,4 @@ feature "Signed in User can delete a movie" do
     expect(page).to have_content('Movie Deleted')
     expect(page).to_not have_content("The Garbage Pail Kids Movie")
   end
-
-
-
-
 end
