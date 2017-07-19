@@ -1,23 +1,6 @@
 require 'rails_helper'
 
-feature "User Edits Profile" do
-  # As an authenticated user
-  # I want to be able to edit my information
-  # So that I can keep my profile up to date
-  #
-  # Acceptance Criteria:
-  # If a user is signed in, they should be able to edit their profile by clicking
-  # on the 'edit profile' link.
-  # On the edit page, the user should see fields to update their user information
-  # (this user story needs additional info once we decide what other things will
-  # go on a users profile)
-  # The form should be pre-filled with the users current profile information, except for
-  # password information.
-  # If the user submits an edit without an email address or username, is should
-  # not save successfully, and the user should be shown an error
-  # Otherwise, the new profile information should be saved, and the user should
-  # be informed of this.
-
+feature "User Edits Profile" do 
   let!(:user) { FactoryGirl.create(:user) }
 
   before(:each) do
