@@ -1,4 +1,8 @@
 <%= flash[:notice] %>
 <h1><%=@movie.name %></h1>
 <p>Description: <%= @movie.description%></p>
-<p><%= link_to "Edit Movie", edit_movie_path %></p>
+<% if user_signed_in? %>
+  <% if (@movie.user == current_user) %>
+  <p><%= link_to "Edit Movie", edit_movie_path %></p> 
+  <% end %>
+<% end %>

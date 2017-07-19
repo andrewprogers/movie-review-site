@@ -7,7 +7,8 @@
 # - I should get to this detail page by clicking on the name of the movie
 
 feature "View Movie" do
-  guardians_of_the_galaxy = Movie.create(name: 'Guardians of the Galaxy', description: "A story")
+  user = FactoryGirl.create(:user)
+  guardians_of_the_galaxy = Movie.create(name: 'Guardians of the Galaxy', description: "A story", user: user)
   scenario "shows individual movie page" do
     visit movies_path
     click_link "Guardians of the Galaxy"
