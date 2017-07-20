@@ -19,6 +19,8 @@
         </p>
           <% if (current_user == review.user) %>
             <%= link_to "Edit Review", edit_movie_review_path(@movie.id, review.id) %>
+            <%= link_to "Delete Review", movie_review_path(@movie.id, review.id), method: :delete %>
+
           <% end %>
       <% end %>
     </ul>
