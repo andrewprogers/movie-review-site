@@ -20,7 +20,6 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    # binding.pry
     @review = Review.find(params[:id])
     if @review.update(review_params)
       flash[:notice] = "Review successfully updated"
