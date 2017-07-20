@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'user deletes a review' do
   let!(:user1) { FactoryGirl.create(:user) }
   let!(:movie1) { FactoryGirl.create(:movie) }
-  let!(:review1) { FactoryGirl.create(:review, body: 'delete me please', movie: movie1, user: user1) }
+  let!(:review1) { FactoryGirl.create(:review, body: 'delete me', movie: movie1, user: user1) }
   let!(:user2) { FactoryGirl.create(:user) }
 
   scenario 'authenticated user deletes review successfully' do
