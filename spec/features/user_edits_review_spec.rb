@@ -58,7 +58,6 @@ feature 'user edits a review' do
   end
 
   scenario 'unauthenticated users cant edit review' do
-    expect(current_user).to be_nil
     visit root_path
     click_link(movie1.name)
 
