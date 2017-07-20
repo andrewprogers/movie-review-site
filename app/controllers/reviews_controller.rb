@@ -22,7 +22,6 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    # binding.pry
     @review = Review.find(params[:id])
     if @review.update(review_params)
       flash[:notice] = "Review successfully updated"
@@ -32,6 +31,13 @@ class ReviewsController < ApplicationController
       @movie = @review.movie
       render :edit
     end
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    flash[:notice] = "Review successfully deleted"
+    redirect_to movie_path(@review.movie)
   end
 
   private
