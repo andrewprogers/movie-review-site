@@ -1,0 +1,18 @@
+<div class="review-form">
+  <%= form_for [@movie, @review] do |f| %>
+    <h3>Edit Review</h3>
+    <div class="row">
+      <%= f.label :rating, "Rating (1-7 stars)" %>
+      <%= f.text_field :rating %>
+    </div>
+
+    <div class="row">
+      <%= f.label :body, "Review (optional)" %>
+      <%= f.text_area :body %>
+    </div>
+
+    <div class="row">
+      <%= f.submit "Update Review" %>
+    </div>
+  <% end %>
+</div>
