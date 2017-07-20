@@ -27,6 +27,7 @@ group :development, :test do
 
   gem 'factory_girl'
   gem 'shoulda-matchers', require: false
+  gem 'database_cleaner'
 end
 
 group :production do
