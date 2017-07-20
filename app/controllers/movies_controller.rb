@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
 
   def check_user
     @movie = Movie.find(params[:id])
-    unless (@movie.user == current_user) || (current_user.admin?)
+    unless @movie.user == current_user || current_user.admin?
       redirect_to movies_path, alert: "Sorry, you are not allowed to do this"
     end
   end

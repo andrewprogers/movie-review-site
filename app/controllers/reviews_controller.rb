@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-
   # need to do review current user check and user authorization similar to movies controller
   def create
     @review = Review.new(review_params)

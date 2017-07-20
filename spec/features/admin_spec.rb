@@ -2,8 +2,7 @@ feature "admin" do
   user = FactoryGirl.create(:user, admin: true)
   other_user = FactoryGirl.create(:user)
   movie = FactoryGirl.create(:movie)
-  review = FactoryGirl.create(:review, movie: movie)
-
+  
   before(:each) do
     visit(root_path)
     click_link 'Sign In'
