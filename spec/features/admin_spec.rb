@@ -12,18 +12,27 @@ feature "admin" do
     click_button("Log in")
   end
 
-  # scenario "views a list of users" do
-  #   click_link "All Users"
-  #   expect(page).to have_content("Users List")
-  #   expect(page).to have_content(other_user.username)
-  #   expect(page).to have_content(user.username)
-  # end
-  #
-  # scenario "can delete a user" do
-  #   click_link "All Users"
-  #   click_link "Delete #{other_user.username}"
-  #   expect(page).to_not have_content(other_user.username)
-  # end
+  scenario "views a list of users" do
+    click_link "All Users"
+    expect(page).to have_content("Users List")
+    expect(page).to have_content(other_user.username)
+    expect(page).to have_content(user.username)
+  end
+
+  scenario "can delete a user" do
+    click_link "All Users"
+    click_button "Delete #{other_user.username}"
+    expect(page).to_not have_content(other_user.username)
+  end
+
+  scenario "non-admin can't view user list" do
+    click_link "Sign Out"
+    click_link 'Sign In'
+    fill_in("Email", with: other_user.email)
+    fill_in("Password", with: other_user.password)
+    click_button("Log in")
+    expect(page).to_not have_content("All Users")
+  end
 
   scenario "can delete movie" do
     visit(movie_path(movie.id))

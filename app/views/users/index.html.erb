@@ -1,0 +1,7 @@
+<%= flash[:notice] %>
+<h1>Users List</h1>
+<ul>
+  <% @users.each do |user| %>
+    <li><%=  user.username %> <%= button_to "Delete #{user.username}", user, data: { confirm: "Are you sure?" }, method: :delete %></li>
+    <% end %>
+</ul>
