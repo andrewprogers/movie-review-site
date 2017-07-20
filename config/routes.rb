@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root "static_pages#index"
   resources :users, only: [:index, :destroy]
   resources :movies do
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:create, :update, :edit]
   end
 end
