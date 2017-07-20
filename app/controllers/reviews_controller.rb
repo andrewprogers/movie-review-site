@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  # need to do review current user check and user authorization similar to movies controller
+  before_action :check_user, only: [:edit, :update, :destroy]
+
   def create
     @review = Review.new(review_params)
     @movie = Movie.find(params[:movie_id])
@@ -43,5 +44,12 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:rating, :body)
+  end
+
+  def check_user
+    @review = Review.find(params[:id])
+    if current_user.nil? || (@review.user != current_user && !current_user.admin?)
+      render file: "#{Rails.root}/public/404.html", status: 404
+    end
   end
 end
