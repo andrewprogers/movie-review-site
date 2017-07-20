@@ -14,6 +14,24 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @review = Review.find(params[:id])
+    @movie = @review.movie
+  end
+
+  def update
+    # binding.pry
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+      flash[:notice] = "Review successfully updated"
+      redirect_to movie_path(@review.movie)
+    else
+      flash[:error] = @review.errors.full_messages.to_sentence
+      @movie = @review.movie
+      render :edit
+    end
+  end
+
   private
 
   def review_params
