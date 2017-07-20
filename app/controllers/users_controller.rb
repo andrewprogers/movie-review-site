@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize_user, except: [:index]
+  before_action :authorize_user, only: [:index]
   before_action :check_user, only: [:index]
 
   def check_user
