@@ -49,7 +49,7 @@ class ReviewsController < ApplicationController
   def check_user
     @review = Review.find(params[:id])
     if current_user.nil? || (@review.user != current_user && !current_user.admin?)
-      render file: "#{Rails.root}/public/404.html",  status: 404
+      render file: "#{Rails.root}/public/404.html", status: 404
     end
   end
 end

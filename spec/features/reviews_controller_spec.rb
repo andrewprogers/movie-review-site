@@ -8,14 +8,14 @@ RSpec.describe ReviewsController, type: :controller do
 
   describe "GET#edit" do
     it "should return a 404 for unauthenticated users" do
-      get :edit, params: {movie_id: movie1.id, id: review1.id}
+      get :edit, params: { movie_id: movie1.id, id: review1.id }
       expect(response.status).to eq(404)
     end
   end
 
   describe 'PUT#update' do
     it "should return a 404 for unauthenticated users" do
-      put :update, params: { id: review1.id, movie_id: movie1.id, review:{ body: "malicious edit" } }
+      put :update, params: { id: review1.id, movie_id: movie1.id, review: { body: "malicious" } }
       expect(response.status).to eq(404)
     end
   end
