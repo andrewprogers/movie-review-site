@@ -1,7 +1,11 @@
-<%= flash[:notice] %>
 <h1><%=@movie.name %></h1>
-<p><%= link_to "Edit Movie", edit_movie_path %></p>
 <p>Description: <%= @movie.description%></p>
+<% if user_signed_in? %>
+  <% if (@movie.user == current_user) %>
+  <p><%= link_to "Edit Movie", edit_movie_path(@movie) %></p>
+  <% end %>
+<% end %>
+
 
 <div class="reviews">
   <% if @reviews.length > 0 %>
@@ -17,3 +21,24 @@
     </ul>
   <% end %>
 </div>
+
+<% if user_signed_in? %>
+  <div class="review-form">
+    <%= form_for [@movie, @review] do |f| %>
+      <h3>Add a Review</h3>
+      <div class="row">
+        <%= f.label :rating, "Rating (1-7 stars)" %>
+        <%= f.text_field :rating %>
+      </div>
+
+      <div class="row">
+        <%= f.label :body, "Review (optional)" %>
+        <%= f.text_area :body %>
+      </div>
+
+      <div class="row">
+        <%= f.submit "Add Review" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

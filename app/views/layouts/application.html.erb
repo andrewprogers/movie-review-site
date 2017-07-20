@@ -24,7 +24,8 @@
       </ul>
     </nav>
     <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <p class="notice"><%= alert %></p>
+    <p class="alert"><%= flash[:error] %></p>
     <%= yield %>
   </body>
 </html>

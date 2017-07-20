@@ -1,5 +1,14 @@
 class MoviesController < ApplicationController
   before_action :authorize_user, except: [:index, :show]
+  before_action :check_user, only: [:edit, :update, :destroy]
+
+  def check_user
+    @movie = Movie.find(params[:id])
+    unless @movie.user == current_user
+      redirect_to movies_path, alert: "Sorry, you are not allowed to do this"
+    end
+  end
+
   def index
     @movies = Movie.all
   end
@@ -7,6 +16,7 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @reviews = @movie.reviews
+    @review = Review.new
   end
 
   def new
@@ -15,6 +25,7 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.create(movie_params)
+    @movie.user_id = current_user.id
     if @movie.save
       redirect_to @movie, notice: "Movie successfully added."
     else
