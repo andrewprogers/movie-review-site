@@ -11,12 +11,6 @@ RSpec.describe ReviewsController, type: :controller do
       get :edit, params: {movie_id: movie1.id, id: review1.id}
       expect(response.status).to eq(404)
     end
-
-    it "should return a 404 for other users besides the review creator" do
-      login_as(user2)
-      get :edit, params: {movie_id: movie1.id, id: review1.id}
-      expect(response.status).to eq(404)
-    end
   end
 
   describe 'PUT#update' do
@@ -24,23 +18,10 @@ RSpec.describe ReviewsController, type: :controller do
       put :update, params: { id: review1.id, movie_id: movie1.id, review:{ body: "malicious edit" } }
       expect(response.status).to eq(404)
     end
-
-    it "should return a 404 for other users besides the review creator" do
-      login_as(user2)
-      put :update, params: { id: review1.id, movie_id: movie1.id, review:{ body: "malicious edit" } }
-      expect(response.status).to eq(404)
-    end
   end
 
   describe "DELETE#destroy" do
     it "should return a 404 for unauthenticated users" do
-      delete :destroy, params: { id: review1.id, movie_id: movie1.id }
-      expect(Review.all.length).to eq(1)
-      expect(response.status).to eq(404)
-    end
-
-    it "should return a 404 for unauthenticated users" do
-      login_as(user2)
       delete :destroy, params: { id: review1.id, movie_id: movie1.id }
       expect(Review.all.length).to eq(1)
       expect(response.status).to eq(404)
