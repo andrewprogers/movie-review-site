@@ -2,18 +2,6 @@ require 'rails_helper'
 
 feature "Signed in User can edit a movie" do
 
-  # Update
-  # As an authenticated user
-  # I want to update an item's information
-  # So that I can correct errors or provide new information
-  # Acceptance Criteria
-  # - I should be logged to the site
-  # - I should be able to view the details of a movie
-  # - I should get to this detail page by clicking on the name of the movie
-  # - I should be able to edit the contents of the movie details by clicking the 'Edit' button
-  # - I should be able to update the movie name
-  # - Upon completion of the update I should be redirected to the movie detail page
-
   let!(:user) { FactoryGirl.create(:user) }
 
   before(:each) do

@@ -1,27 +1,7 @@
 require 'rails_helper'
 
 feature "User can see list of movies" do
-  # As an authenticated user
-  # I want to view a list of movies
-  # So that I can choose a movie to review
-  # Acceptance Criteria
-  # - I should be logged to the site
-  # - I should be able to see a list of all movies that have been submitted
-  # - I should get to this list form the site index
-  # As an authenticated user
-  # I want to view the details about a movie
-  # So that I can get more information about it
-  # Acceptance Criteria
-  # - I should not be logged into the site
-  # - I should be able to view the details of a movie
-  # - I should get to this detail page by clicking on the name of the movie
-  # As an unauthenticated user
-  # I want to view a list of movies
-  # So that I view the most popular movies
-  # Acceptance Criteria
-  # - I should not be logged into the site
-  # - I should be able to see a list of all movies that have been submitted
-  # - I should get to this list form the site index
+
   scenario "shows visitor list of movies" do
     user = FactoryGirl.create(:user)
     gu = Movie.create(name: 'Guardians of the Galaxy', description: "A story", user: user)
