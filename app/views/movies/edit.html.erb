@@ -15,4 +15,8 @@
 
 <h3>Delete Movie</h3>
 
-<p><%= button_to "Delete Movie", @movie, data: { confirm: "Are you sure?" }, method: :delete %></p>
+<% if user_signed_in? %>
+  <% if (@movie.user == current_user) %>
+  <p><%= button_to "Delete Movie", @movie, data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <% end %>
+<% end %>
