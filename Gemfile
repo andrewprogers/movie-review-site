@@ -15,6 +15,7 @@ end
 gem 'foundation-rails'
 gem 'dotenv'
 gem 'devise'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'capybara'
