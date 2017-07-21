@@ -16,10 +16,9 @@ group :development do
 end
 
 gem 'foundation-rails'
-# gem 'dotenv'
 gem 'devise'
 gem 'carrierwave'
-gem 'fog'
+gem 'fog-aws'
 
 group :development, :test do
   gem 'capybara'
