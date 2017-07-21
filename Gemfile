@@ -1,6 +1,9 @@
 source 'https://rubygems.org/'
 
 gem 'rails', '>= 5.1.2'
+
+gem 'dotenv-rails', require: 'dotenv/rails-now'
+
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
@@ -13,9 +16,10 @@ group :development do
 end
 
 gem 'foundation-rails'
-gem 'dotenv'
+# gem 'dotenv'
 gem 'devise'
 gem 'carrierwave'
+gem 'fog'
 
 group :development, :test do
   gem 'capybara'
