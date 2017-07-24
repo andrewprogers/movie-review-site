@@ -4,7 +4,15 @@ Rails.application.routes.draw do
   root "static_pages#index"
   resources :users, only: [:index, :destroy]
   resources :movies do
-    resources :reviews, only: [:create, :update, :edit, :destroy]
+    resources :reviews, only: [:create, :update, :edit, :destroy] do
+      resource :votes, only: [:create]
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resources :reviews, only: [:index]
+    end
   end
 
   namespace :api do
