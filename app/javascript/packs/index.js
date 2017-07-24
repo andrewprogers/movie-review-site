@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../react/src/App';
+import MovieIndex from '../react/src/components/MovieIndex';
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('app'));
+  ReactDOM.render(<MovieIndex />, document.getElementById('app'));
 })
