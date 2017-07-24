@@ -8,4 +8,10 @@ Rails.application.routes.draw do
       resource :votes, only: [:create]
     end
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :reviews, only: [:index]
+    end
+  end
 end
