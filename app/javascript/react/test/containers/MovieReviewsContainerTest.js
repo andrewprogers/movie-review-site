@@ -4,13 +4,16 @@ import jasmineEnzyme from 'jasmine-enzyme';
 
 import MovieReviewsContainer from '../../src/containers/MovieReviewsContainer';
 import MovieReviewTile from '../../src/components/MovieReviewTile';
-
+import reviews_data from '../constants/reviews_data'
 
 describe('MovieReviewsContainer', () => {
   let wrapper;
+  let reviews = reviews_data.reviews;
 
   beforeEach(() => {
-    wrapper = mount(<MovieReviewsContainer />)
+    wrapper = mount(
+      <MovieReviewsContainer
+      initialReviews={reviews} />)
   })
 
   it('should render a div with id "latest-movie-reviews"', () => {
