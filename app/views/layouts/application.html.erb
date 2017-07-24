@@ -17,7 +17,6 @@
         <li class="name">
           <h1><a href="#">38 Stahs</a></h1>
         </li>
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
       </ul>
 
       <section class="top-bar-section">
@@ -28,16 +27,9 @@
             <% unless current_user.profile_photo.file.nil? %>
               <li><%= image_tag current_user.profile_photo.url, { size: 50 } %></li>
             <% end %>
-            <li class="has-dropdown">
-              <a href="#">Welcome <%= current_user.username %>!</a>
-              <ul class="dropdown">
-                <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-              </ul>
-            </li>
-            <% if (current_user.admin?) %>
-              <li><%= link_to "All Users", users_path %></li>
-            <% end %>
+            <li><%= link_to "Welcome #{current_user.username}!", "#" %></li>
+            <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li><%= link_to 'Sign Up', new_user_registration_path %></li>
             <li><%= link_to 'Sign In', new_user_session_path %></li>
@@ -47,6 +39,9 @@
         <!-- Left Nav Section -->
         <ul class="left">
           <li><%= link_to "Movies", movies_path %></li>
+          <% if user_signed_in? && current_user.admin? %>
+            <li><%= link_to "All Users", users_path %></li>
+          <% end %>%>
         </ul>
       </section>
     </nav>
