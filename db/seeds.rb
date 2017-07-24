@@ -63,7 +63,7 @@ review_bodies = [
     rating: rating,
     body: review_bodies.sample,
     user: users.sample,
-    movie: movies.sample  
+    movie: movies.sample
   }
   Review.find_or_create_by(new_review)
 end
