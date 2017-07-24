@@ -1,0 +1,10 @@
+#profile-photo-container {
+  display: inline-block;
+  height: 45px;
+  margin-right: 10px;
+}
+
+#profile-photo {
+  display: inline-block;
+  padding-top: 0px;
+}
