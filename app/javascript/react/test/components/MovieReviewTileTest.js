@@ -4,7 +4,6 @@ import jasmineEnzyme from 'jasmine-enzyme';
 
 import MovieReviewTile from '../../src/components/MovieReviewTile';
 
-
 describe('MovieReviewTile', () => {
   let wrapper;
 
