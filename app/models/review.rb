@@ -9,18 +9,15 @@ class Review < ApplicationRecord
   def votes_count(review_id)
     @review = Review.find(review_id)
     @votes = Vote.where(review_id: @review).sum(:value)
-    return @votes
   end
 
   def upvotes_count(review_id)
     @review = Review.find(review_id)
     @votes = Vote.where(review_id: @review, value: 1).count
-    return @votes
   end
 
   def downvotes_count(review_id)
     @review = Review.find(review_id)
     @votes = Vote.where(review_id: @review, value: -1).count
-    return @votes
   end
 end

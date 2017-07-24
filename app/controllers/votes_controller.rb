@@ -4,7 +4,7 @@ class VotesController < ApplicationController
   def create
     @vote = Vote.where(user: current_user, review: @review).first
     if @vote.nil?
-        @vote = Vote.new(review: @review, value: @value)
+      @vote = Vote.new(review: @review, value: @value)
       @vote.user = current_user
     elsif @vote.value == params[:value].to_i
       @vote.value = 0
@@ -24,7 +24,6 @@ class VotesController < ApplicationController
     @review = Review.find(params[:review_id])
     @value = params[:value]
   end
-
 
   def authorize_user
     if !user_signed_in?

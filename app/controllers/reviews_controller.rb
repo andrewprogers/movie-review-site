@@ -40,7 +40,6 @@ class ReviewsController < ApplicationController
     redirect_to movie_path(@review.movie)
   end
 
-
   private
 
   def review_params
