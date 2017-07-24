@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-#Create users
+# Create users
 user_values = [
   ['Andrew', 'Rogers', 'andrewprogers', 'andrewprogers@gmail.com', '1234567', true],
   ['George', 'Gilmer', 'georgegilmer', 'george.gilmer@gmail.com', '1234567', true],
@@ -15,11 +15,20 @@ user_values = [
 ]
 
 user_values.each do |user|
-  User.create(first_name: user[0], last_name: user[1], username: user[2], email: user[3], password: user[4], password_confirmation: user[4], admin: user[5])
+  new_user = {
+    first_name: user[0],
+    last_name: user[1],
+    username: user[2],
+    email: user[3],
+    password: user[4],
+    password_confirmation: user[4],
+    admin: user[5]
+  }
+  User.create(new_user)
 end
 users = User.all
 
-#Create Movies
+# Create Movies
 movie_values = [
   ["The Departed", "South Boston cop Billy Costigan (Leonardo DiCaprio) goes under cover to infiltrate the organization of gangland chief Frank Costello (Jack Nicholson). As Billy gains the mobster's trust, a career criminal named Colin Sullivan (Matt Damon) infiltrates the police department and reports on its activities to his syndicate bosses. When both organizations learn they have a mole in their midst, Billy and Colin must figure out each other's identities to save their own lives."],
   ["The Boondock Saints", "Tired of the crime overrunning the streets of Boston, Irish Catholic twin brothers Conner (Sean Patrick Flanery) and Murphy (Norman Reedus) are inspired by their faith to cleanse their hometown of evil with their own brand of zealous vigilante justice. As they hunt down and kill one notorious gangster after another, they become controversial folk heroes in the community. But Paul Smecker (Willem Dafoe), an eccentric FBI agent, is fast closing in on their blood-soaked trail."],
@@ -35,7 +44,7 @@ movie_values.each do |movie|
 end
 movies = Movie.all
 
-#Create reviews
+# Create reviews
 review_bodies = [
   "This movies was really well acted!",
   "Fantastic, I was on the edge of my seat",
@@ -50,5 +59,11 @@ review_bodies = [
 
 30.times do |idx|
   rating = (idx % 5) + 1
-  Review.find_or_create_by(rating: rating, body: review_bodies.sample, user: users.sample, movie: movies.sample)
+  new_review = {
+    rating: rating,
+    body: review_bodies.sample,
+    user: users.sample,
+    movie: movies.sample  
+  }
+  Review.find_or_create_by(new_review)
 end
