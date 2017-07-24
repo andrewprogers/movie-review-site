@@ -43,24 +43,21 @@
           <li><%= link_to "Movies", movies_path %></li>
           <% if user_signed_in? && current_user.admin? %>
             <li><%= link_to "All Users", users_path %></li>
-          <% end %>%>
+          <% end %>
         </ul>
       </section>
     </nav>
-
-    <nav>
-      <ul>
-
-
-
-      </ul>
-    </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="notice"><%= alert %></p>
-    <p class="alert"><%= flash[:error] %></p>
+    
+    <div class="flash-notices">
+      <% flash.each do |type, message| %>
+        <div class="flash-<%= type %>">
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
 
     <div class="row">
-      <div class="small -12 columns">
+      <div class="small-12 columns">
         <%= yield %>
       </div>
     </div>
