@@ -6,4 +6,10 @@ Rails.application.routes.draw do
   resources :movies do
     resources :reviews, only: [:create, :update, :edit, :destroy]
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :reviews, only: [:index]
+    end
+  end
 end
