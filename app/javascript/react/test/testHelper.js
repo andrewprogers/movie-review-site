@@ -6,7 +6,7 @@ import jasmineEnzyme from 'jasmine-enzyme';
 
 beforeEach(() => {
   jasmineEnzyme();
-})
+});
 
 // function to require all modules for a given context
 let requireAll = requireContext => {
