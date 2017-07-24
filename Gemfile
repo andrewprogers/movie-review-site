@@ -19,6 +19,7 @@ gem 'foundation-rails'
 gem 'devise'
 gem 'carrierwave'
 gem 'fog-aws'
+gem 'webpacker'
 
 group :development, :test do
   gem 'capybara'
