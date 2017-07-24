@@ -14,7 +14,7 @@ describe('MovieReviewsContainer', () => {
     wrapper = mount(
       <MovieReviewsContainer
       initialReviews={reviews} />)
-  })
+  });
 
   it('should render a div with id "latest-movie-reviews"', () => {
     expect(wrapper.find('div#latest-movie-reviews')).toBePresent()
