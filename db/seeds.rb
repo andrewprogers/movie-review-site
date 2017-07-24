@@ -19,7 +19,6 @@ user_values.each do |user|
 end
 users = User.all
 
-binding.pry
 #Create Movies
 movie_values = [
   ["The Departed", "South Boston cop Billy Costigan (Leonardo DiCaprio) goes under cover to infiltrate the organization of gangland chief Frank Costello (Jack Nicholson). As Billy gains the mobster's trust, a career criminal named Colin Sullivan (Matt Damon) infiltrates the police department and reports on its activities to his syndicate bosses. When both organizations learn they have a mole in their midst, Billy and Colin must figure out each other's identities to save their own lives."],
