@@ -90,4 +90,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   # required for devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  
 end
