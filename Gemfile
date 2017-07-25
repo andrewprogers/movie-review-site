@@ -9,9 +9,9 @@ gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
-#gem 'sendgrid-ruby'
 
-#gem 'mailcatcher', '~> 0.6.1'
+
+gem 'mailcatcher'
 group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
