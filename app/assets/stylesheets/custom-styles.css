@@ -41,3 +41,10 @@
   padding: 3px;
   margin: 2px;
 }
+
+.movie-review-tile {
+  border: 2px solid #BBB;
+  margin: 5px;
+  padding: 5px;
+  background-color: #FAFAFA;
+}
