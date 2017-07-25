@@ -31,6 +31,15 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.create(movie_params)
     @movie.user_id = current_user.id
+
+    unless ENV['RAILS_ENV'] == 'test'
+      externalMovie = search_for_movie(params[:movie][:name])
+      if externalMovie
+        @movie.imdbID = externalMovie["imdbID"]
+        @movie.remote_poster_url = poster_url(@movie.imdbID)
+      end
+    end
+
     if @movie.save
       redirect_to @movie, notice: "Movie successfully added."
     else
@@ -67,5 +76,20 @@ class MoviesController < ApplicationController
     if !user_signed_in?
       raise ActionController::RoutingError.new("Not Found")
     end
+  end
+
+  def search_for_movie(title)
+    uri = URI("http://www.omdbapi.com/?t=#{title}&apikey=#{ENV['OMDB_API_KEY']}")
+    response = JSON.parse(Net::HTTP.get(uri))
+    if response["Response"] == "False"
+      return false
+    else
+      return response
+    end
+  end
+
+  def poster_url(imdb_id)
+    height = 400
+    "http://img.omdbapi.com/?i=#{imdb_id}&h=#{height}&apikey=#{ENV['OMDB_API_KEY']}"
   end
 end
