@@ -38,7 +38,6 @@ class MoviesController < ApplicationController
         @movie.imdbID = externalMovie["imdbID"]
         @movie.remote_poster_url = poster_url(@movie.imdbID)
       end
-      binding.pry
     end
 
     if @movie.save
