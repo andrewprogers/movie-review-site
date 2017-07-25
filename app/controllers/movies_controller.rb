@@ -88,8 +88,8 @@ class MoviesController < ApplicationController
     end
   end
 
-  def poster_url(imdbId)
+  def poster_url(imdb_id)
     height = 400
-    "http://img.omdbapi.com/?i=#{imdbId}&h=#{height}&apikey=#{ENV['OMDB_API_KEY']}"
+    "http://img.omdbapi.com/?i=#{imdb_id}&h=#{height}&apikey=#{ENV['OMDB_API_KEY']}"
   end
 end
