@@ -21,12 +21,8 @@ class MovieReviewsContainer extends React.Component {
     })
     .then(response => response.json())
     .then(json => {
-      console.log(json.reviews[0])
       if (json.reviews[0].updated_at !== this.state.reviews[0].updated_at) {
-        console.log(this.state.reviews[0].updated_at)
         this.setState({reviews: json.reviews})
-      } else {
-        console.log('no change')
       }
     })
     .catch(err => console.error(err.message))
