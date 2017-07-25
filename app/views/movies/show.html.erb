@@ -23,8 +23,8 @@
           Downvote Count: <%= review.downvotes_count(review.id) %>
         </p>
           <% if user_signed_in? %>
-          <%= button_to "Upvote", movie_review_votes_path(@movie.id, review.id, value: 1), method: :post %>
-          <%= button_to "Downvote", movie_review_votes_path(@movie.id, review.id, value: -1), method: :post %>
+          <%= link_to "Upvote", "#", class: "upvote review-#{review.id}" %>
+          <%= link_to "Downvote", "#", class: "downvote review-#{review.id}" %>
             <% if (current_user.admin?) || (current_user == review.user) %>
               <%= link_to "Edit Review", edit_movie_review_path(@movie.id, review.id) %>
               <%= link_to "Delete Review", movie_review_path(@movie.id, review.id), method: :delete %>
