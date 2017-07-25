@@ -22,6 +22,9 @@ gem 'foundation-rails'
 gem 'devise'
 gem 'carrierwave'
 gem 'fog-aws'
+gem 'webpacker'
+gem "active_model_serializers", '~> 0.9.0'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'capybara'
