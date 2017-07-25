@@ -1,6 +1,6 @@
 <h1><%=@movie.name %></h1>
-<% unless @movie.poster_url.nil? %>
-  <%= image_tag @movie.poster_url %>
+<% unless @movie.poster.url.nil? %>
+  <%= image_tag @movie.poster.medium.url %>
 <% end %>
 <p>Description: <%= @movie.description%></p>
 <% if user_signed_in? %>

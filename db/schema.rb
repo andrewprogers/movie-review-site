@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20170725153614) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.string "imdbID"
-    t.string "poster_url"
+    t.string "poster"
   end
 
   create_table "reviews", force: :cascade do |t|

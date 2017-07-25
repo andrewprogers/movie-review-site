@@ -31,11 +31,14 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.create(movie_params)
     @movie.user_id = current_user.id
-    
-    externalMovie = searchForMovie(params[:movie][:name])
-    if externalMovie
-      @movie.imdbID = externalMovie["imdbID"]
-      @movie.poster_url = externalMovie["Poster"]
+
+    unless ENV['RAILS_ENV'] == 'test'
+      externalMovie = search_for_movie(params[:movie][:name])
+      if externalMovie
+        @movie.imdbID = externalMovie["imdbID"]
+        @movie.remote_poster_url = poster_url(@movie.imdbID)
+      end
+      binding.pry
     end
 
     if @movie.save
@@ -76,7 +79,7 @@ class MoviesController < ApplicationController
     end
   end
 
-  def searchForMovie(title)
+  def search_for_movie(title)
     uri = URI("http://www.omdbapi.com/?t=#{title}&apikey=#{ENV['OMDB_API_KEY']}")
     response = JSON.parse(Net::HTTP.get(uri))
     if response["Response"] == "False"
@@ -84,5 +87,10 @@ class MoviesController < ApplicationController
     else
       return response
     end
+  end
+
+  def poster_url(imdbId)
+    height = 400
+    "http://img.omdbapi.com/?i=#{imdbId}&h=#{height}&apikey=#{ENV['OMDB_API_KEY']}"
   end
 end
