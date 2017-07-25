@@ -31,6 +31,13 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.create(movie_params)
     @movie.user_id = current_user.id
+    
+    externalMovie = searchForMovie(params[:movie][:name])
+    if externalMovie
+      @movie.imdbID = externalMovie["imdbID"]
+      @movie.poster_url = externalMovie["Poster"]
+    end
+
     if @movie.save
       redirect_to @movie, notice: "Movie successfully added."
     else
@@ -66,6 +73,16 @@ class MoviesController < ApplicationController
   def authorize_user
     if !user_signed_in?
       raise ActionController::RoutingError.new("Not Found")
+    end
+  end
+
+  def searchForMovie(title)
+    uri = URI("http://www.omdbapi.com/?t=#{title}&apikey=#{ENV['OMDB_API_KEY']}")
+    response = JSON.parse(Net::HTTP.get(uri))
+    if response["Response"] == "False"
+      return false
+    else
+      return response
     end
   end
 end
