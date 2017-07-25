@@ -9,8 +9,10 @@ import reviews_data from '../constants/reviews_data'
 describe('MovieReviewsContainer', () => {
   let wrapper;
   let reviews = reviews_data.reviews;
+  let updateReviewsSpy;
 
   beforeEach(() => {
+    updateReviewsSpy = spyOn(MovieReviewsContainer.prototype, "updateReviews")
     wrapper = mount(
       <MovieReviewsContainer
       initialReviews={reviews} />)
@@ -26,5 +28,9 @@ describe('MovieReviewsContainer', () => {
 
   it('renders a series of movie reviews', () => {
     expect(wrapper.find(MovieReviewTile)).toBePresent()
+  })
+
+  it('should fetch to the API endpooint on load', () => {
+    expect(updateReviewsSpy).toHaveBeenCalled();
   })
 })
