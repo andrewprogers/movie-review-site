@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
 
     if @review.save
       UserReviewMailer.review_email(@review).deliver_now
-      flash[:success] = "Thanks for reviewing"
+      flash[:notice] = "Thanks for reviewing"
       redirect_to movie_path(@movie)
     else
       flash[:error] = @review.errors.full_messages.to_sentence
