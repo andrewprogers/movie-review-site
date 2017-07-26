@@ -97,7 +97,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = {
     host: 'thirty-eight-stahs.herokuapp.com',
-    port: ENV['MAILGUN_SMTP_PORT'] 
+    port: ENV['MAILGUN_SMTP_PORT']
   }
 
   ActionMailer::Base.smtp_settings = {
@@ -105,7 +105,7 @@ Rails.application.configure do
     address: ENV['MAILGUN_SMTP_SERVER'],
     user_name: ENV['MAILGUN_SMTP_LOGIN'],
     password: ENV['MAILGUN_SMTP_PASSWORD'],
-    domain: 'thirty-eight-stahs.herokuapp.com',
+    domain: ENV['MAILGUN_DOMAIN'],
     authentication: :plain,
   }
   ActionMailer::Base.delivery_method = :smtp
