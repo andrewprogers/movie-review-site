@@ -22,21 +22,21 @@ feature 'user can vote for a review' do
   scenario 'user successfully upvotes a review' do
     expect(page).to have_content('Upvote Count: 0')
     expect(page).to have_content('Downvote Count: 0')
-    click_button('Upvote')
+    click_link('Upvote')
     expect(page).to have_content('Upvote Count: 1')
     expect(page).to have_content('Downvote Count: 0')
 
-    click_button('Downvote')
+    click_link('Downvote')
     expect(page).to have_content('Upvote Count: 0')
     expect(page).to have_content('Downvote Count: 1')
 
-    click_button('Downvote')
+    click_link('Downvote')
     expect(page).to have_content('Upvote Count: 0')
     expect(page).to have_content('Downvote Count: 0')
   end
 
   scenario 'other user also votes' do
-    click_button('Upvote')
+    click_link('Upvote')
     click_link('Sign Out')
 
     click_link('Sign In')
@@ -45,15 +45,15 @@ feature 'user can vote for a review' do
     click_button('Log in')
     visit(movie_path(movie.id))
 
-    click_button('Upvote')
+    click_link('Upvote')
     expect(page).to have_content('Upvote Count: 2')
     expect(page).to have_content('Downvote Count: 0')
 
-    click_button('Upvote')
+    click_link('Upvote')
     expect(page).to have_content('Upvote Count: 1')
     expect(page).to have_content('Downvote Count: 0')
 
-    click_button('Downvote')
+    click_link('Downvote')
     expect(page).to have_content('Upvote Count: 1')
     expect(page).to have_content('Downvote Count: 1')
   end
