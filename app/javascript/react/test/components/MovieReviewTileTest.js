@@ -24,7 +24,7 @@ describe('MovieReviewTile', () => {
   })
 
   it('should show the username of the reviewer', () => {
-    expect(wrapper.find('.reviewer').first().text()).toEqual(`Reviewer: ${reviews[1].user.username}`)
+    expect(wrapper.find('.reviewer').first().text()).toEqual(` - Reviewed By: ${reviews[1].user.username}`)
   })
 
   it('should show the rating', () => {
@@ -33,5 +33,13 @@ describe('MovieReviewTile', () => {
 
   it('should show the body, if there is one', () => {
     expect(wrapper.find('.review-body').first().text()).toEqual(reviews[1].body)
+  })
+
+  it('should link to the movie show page', () => {
+    expect(wrapper.find('a').props().href).toEqual('/movies/5')
+  })
+
+  it('should have an img tag with the poster', () => {
+    expect(wrapper.find('img')).toBePresent();
   })
 })

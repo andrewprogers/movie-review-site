@@ -1,3 +1,7 @@
+#latest-movie-reviews h2 {
+  margin-left: 10px;
+}
+
 #profile-photo-container {
   display: inline-block;
   height: 45px;
@@ -43,8 +47,34 @@
 }
 
 .movie-review-tile {
-  border: 2px solid #BBB;
-  margin: 5px;
+  border-top: 2px solid #7B3B3B;
+  border-left: 2px solid #7B3B3B;
+  border-right: 2px solid #493736;
+  border-bottom: 2px solid #493736;
+  margin: 10px;
   padding: 5px;
-  background-color: #FAFAFA;
+  background-color: #F8F1E9;
+}
+
+.thumb-container {
+  display: inline-block;
+  float: left;
+  width: 100px;
+  margin-left: 20px;
+}
+
+span.movie-name {
+  display: inline-block;
+  font-size: 1.5em;
+  color: #2A2829;
+  margin-right: 20px;
+}
+
+.review-body {
+  margin: 0
+}
+
+.movie-review-tile hr {
+  margin-top: 2px;
+  margin-bottom: 3px;
 }
