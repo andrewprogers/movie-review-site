@@ -13,51 +13,57 @@
 <div class="reviews">
   <% if @reviews.length > 0 %>
     <h3>Reviews</h3>
-    <ul>
       <% @reviews.each do |review| %>
-        <p>
-          <b>Rating: <%= review.rating %> - <%= review.user.username %></b>
-          <br />
+        <div class="show-page-review">
+          <b>Rating: <%= review.rating %> • <%= review.user.username %> • </b>
           <span id=<%= "votes-review-#{review.id}" %>>
             Total Votes: <%= review.votes_count(review.id) %>
-            Upvote Count: <%= review.upvotes_count(review.id) %>
-            Downvote Count: <%= review.downvotes_count(review.id) %>
           </span>
-          <br />
-          <%= review.body %>
-        </p>
           <% if user_signed_in? %>
-            <%= link_to "Upvote", "", class: "upvote review-#{review.id}" %>
-            <%= link_to "Downvote", "", class: "downvote review-#{review.id}" %>
             <% if (current_user.admin?) || (current_user == review.user) %>
-              <br />
-              <%= link_to "Edit Review", edit_movie_review_path(@movie.id, review.id) %>
+              • <%= link_to "Edit Review", edit_movie_review_path(@movie.id, review.id) %> •
               <%= link_to "Delete Review", movie_review_path(@movie.id, review.id), method: :delete %>
             <% end %>
           <% end %>
+          <hr />
+          <% if review.body.length > 0 %>
+            <span class="review-body">
+              <%= review.body %>
+            </span>
+            <br />
+          <% end %>
+
+          <% if user_signed_in? %>
+            <div class="vote-buttons">
+              Did you find this review helpful?
+              <br />
+              <%= link_to "Upvote", "", class: "upvote review-#{review.id}" %>
+              <%= link_to "Downvote", "", class: "downvote review-#{review.id}" %>
+            </div>
+          <% end %>
+        </div>
       <% end %>
-    </ul>
+  <% end %>
+  <% if user_signed_in? %>
+  <div class="review-form">
+    <%= form_for [@movie, @review] do |f| %>
+    <h3>Add a Review</h3>
+    <div class="row">
+      <%= f.label :rating, "Rating (1-7 stars)" %>
+      <%= f.text_field :rating %>
+    </div>
+
+    <div class="row">
+      <%= f.label :body, "Review (optional)" %>
+      <%= f.text_area :body %>
+    </div>
+
+    <div class="row">
+      <%= f.submit "Add Review" %>
+    </div>
+    <% end %>
+  </div>
   <% end %>
 </div>
 
-<% if user_signed_in? %>
-  <div class="review-form">
-    <%= form_for [@movie, @review] do |f| %>
-      <h3>Add a Review</h3>
-      <div class="row">
-        <%= f.label :rating, "Rating (1-7 stars)" %>
-        <%= f.text_field :rating %>
-      </div>
-
-      <div class="row">
-        <%= f.label :body, "Review (optional)" %>
-        <%= f.text_area :body %>
-      </div>
-
-      <div class="row">
-        <%= f.submit "Add Review" %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
 <%= javascript_pack_tag 'review_button.js' %>
