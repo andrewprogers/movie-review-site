@@ -22336,18 +22336,101 @@ document.addEventListener('DOMContentLoaded', function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_MovieReviewTile__ = __webpack_require__(188);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
 
 
 
-var MovieReviewsContainer = function MovieReviewsContainer(props) {
-  var reviewTiles = props.initialReviews.map(function (review) {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_MovieReviewTile__["a" /* default */], {
-      key: review.id,
-      review: review
-    });
-  });
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { id: 'latest-movie-reviews' }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('h2', null, 'Latest Movie Reviews'), reviewTiles);
-};
+
+var MovieReviewsContainer = function (_React$Component) {
+  _inherits(MovieReviewsContainer, _React$Component);
+
+  function MovieReviewsContainer(props) {
+    _classCallCheck(this, MovieReviewsContainer);
+
+    var _this = _possibleConstructorReturn(this, (MovieReviewsContainer.__proto__ || Object.getPrototypeOf(MovieReviewsContainer)).call(this, props));
+
+    _this.state = {
+      reviews: _this.props.initialReviews
+    };
+    _this.updateReviews = _this.updateReviews.bind(_this);
+    return _this;
+  }
+
+  _createClass(MovieReviewsContainer, [{
+    key: 'updateReviews',
+    value: function updateReviews() {
+      var _this2 = this;
+
+      fetch('/api/v1/reviews').then(function (response) {
+        if (response.ok) {
+          return response;
+        } else {
+          throw new Error("Cannot fetch updated reviews");
+        }
+      }).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        if (json.reviews[0].updated_at !== _this2.state.reviews[0].updated_at) {
+          _this2.setState({ reviews: json.reviews });
+        }
+      }).catch(function (err) {
+        return console.error(err.message);
+      });
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.updateReviews();
+      this.updateInterval = setInterval(this.updateReviews, 1000);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      clearInterval(this.updateInterval);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var reviewTiles = this.state.reviews.map(function (review) {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_MovieReviewTile__["a" /* default */], {
+          key: review.id,
+          review: review
+        });
+      });
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { id: 'latest-movie-reviews' }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('h2', null, 'Latest Movie Reviews'), reviewTiles);
+    }
+  }]);
+
+  return MovieReviewsContainer;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["a"] = (MovieReviewsContainer);
 
