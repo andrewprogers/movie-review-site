@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 feature "admin" do
   user = FactoryGirl.create(:user, admin: true)
   other_user = FactoryGirl.create(:user)
@@ -23,6 +25,20 @@ feature "admin" do
     click_button "Delete #{other_user.username}"
     expect(page).to_not have_content(other_user.username)
     expect(page).to have_content("User Deleted")
+  end
+
+  scenario "when user is deleted, associated reviews and votes are deleted" do
+    login_as(user)
+    movie1 = FactoryGirl.create(:movie, user_id: other_user.id)
+    review1 = FactoryGirl.create(:review, movie_id: movie1.id, user_id: other_user.id)
+    vote1 = FactoryGirl.create(:vote, review: review1, user: other_user)
+    visit users_path
+
+    click_button "Delete #{other_user.username}"
+    expect(User.where(id: other_user.id).length).to eq(0)
+    expect(Movie.where(id: movie1.id).length).to eq(1)
+    expect(Review.where(id: review1.id).length).to eq(0)
+    expect(Vote.where(id: vote1.id).length).to eq(0)
   end
 
   scenario "non-admin can't view user list" do

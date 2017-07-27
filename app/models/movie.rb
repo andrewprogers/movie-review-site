@@ -1,7 +1,7 @@
 class Movie < ApplicationRecord
   mount_uploader :poster, MoviePosterUploader
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   validates :name, presence: true
   belongs_to :user
 

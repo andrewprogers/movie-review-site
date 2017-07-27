@@ -30,4 +30,17 @@ feature 'user deletes a review' do
     expect(page).to have_content(review1.body)
     expect(page).to_not have_content('Delete Review')
   end
+
+  scenario "all associated votes are deleted when a review is deleted" do
+    login_as(user1)
+    movie1 = FactoryGirl.create(:movie, user_id: user1.id)
+    review1 = FactoryGirl.create(:review, movie_id: movie1.id, user_id: user1.id)
+    vote1 = FactoryGirl.create(:vote, review: review1, user: user1)
+    visit movie_path(movie1)
+
+    click_link 'Delete Review'
+    expect(Movie.where(id: movie1.id).length).to eq(1)
+    expect(Review.where(id: review1.id).length).to eq(0)
+    expect(Vote.where(id: vote1.id).length).to eq(0)
+  end
 end
