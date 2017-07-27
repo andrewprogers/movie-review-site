@@ -4,8 +4,28 @@
   <%= submit_tag "Search", :name => nil %>
 <% end %>
 <h1>Movies</h1>
-<ul>
+<div class="movies-container row">
   <% @movies.each do |movie| %>
-    <li><%= link_to movie.name, movie %></li>
+    <a href=<%= movie_path(movie) %>>
+      <div class="movie-tile small-4 columns">
+        <div class="">
+          <% unless movie.imdbID.nil? %>
+            <%= image_tag movie.poster.medium %>
+          <% end %>
+        </div>
+      </div>
+    </a>
+  <% end %>
+</div>
+<% if @movies.any? { |movie| movie.imdbID.nil? } %>
+  <h3>Other Movies:</h3>
+  <ul>
+    <% @movies.each do |movie| %>
+      <a href=<%= movie_path(movie) %>>
+        <% if movie.imdbID.nil? %>
+          <li><%= movie.name %></li>
+        <% end %>
+      </a>
     <% end %>
-</ul>
+  </ul>
+<% end %>
