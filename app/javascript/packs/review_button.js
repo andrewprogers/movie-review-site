@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       createVote(reviewId, 1, (count) => {
         let votesDigest = document.getElementById(`votes-review-${reviewId}`)
-        votesDigest.innerHTML = `Total Votes: ${count.total} Upvote Count: ${count.up} Downvote Count: ${count.down}`
+        votesDigest.innerHTML = `Total Votes: ${count.total}`
       })
     })
   }
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       createVote(reviewId, -1, (count) => {
         let votesDigest = document.getElementById(`votes-review-${reviewId}`)
-        votesDigest.innerHTML = `Total Votes: ${count.total} Upvote Count: ${count.up} Downvote Count: ${count.down}`
+        votesDigest.innerHTML = `Total Votes: ${count.total}`
       })
     })
   }
