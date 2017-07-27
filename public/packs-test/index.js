@@ -22444,7 +22444,12 @@ var MovieReviewsContainer = function (_React$Component) {
 
 
 var MovieReviewTile = function MovieReviewTile(props) {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { className: "movie-review-tile" }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h4", { className: "movie-name" }, props.review.movie.name), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "reviewer" }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("b", null, "Reviewer:"), " ", props.review.user.username), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "rating" }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("b", null, "Rating:"), " ", props.review.rating), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", { className: "review-body" }, props.review.body));
+  var imageSrc = void 0;
+  if (props.review.movie.poster) {
+    imageSrc = props.review.movie.poster.thumb.url;
+  }
+  var movieLink = "/movies/" + props.review.movie.id;
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { className: "movie-review-tile" }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { className: "row" }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { className: "thumb-container" }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: imageSrc })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { className: "small-10 columns" }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", { href: movieLink }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "movie-name" }, props.review.movie.name)), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "rating" }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("b", null, "Rating:"), " ", props.review.rating), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: "reviewer" }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("b", null, " - Reviewed By:"), " ", props.review.user.username), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("hr", null), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", { className: "review-body" }, props.review.body))));
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (MovieReviewTile);
