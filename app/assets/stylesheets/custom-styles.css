@@ -119,3 +119,21 @@ span.movie-name {
 .review-form {
   padding: 17px;
 }
+
+.movie-tile {
+  /*background-color: #DDD;*/
+  margin: 5px 0px;
+}
+
+.movie-tile div {
+  display: block;
+  /*margin-left: auto;
+  margin-right: auto;*/
+  text-align: center;
+  padding: 0;
+}
+
+.movie-tile span {
+  color: #444;
+  text-align: center;
+}
