@@ -1,7 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :movie
-  has_many :votes
+  has_many :votes, dependent: :destroy
 
   validates :rating, presence: true, numericality: { only_integer: true }
   validates_inclusion_of :rating, in: 1..7
