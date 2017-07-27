@@ -16,6 +16,8 @@ class MoviesController < ApplicationController
     else
       Movie.all
     end
+    @movies = @movies.sort_by { |movie| movie.created_at }
+    @movies.reverse!
   end
 
   def show
