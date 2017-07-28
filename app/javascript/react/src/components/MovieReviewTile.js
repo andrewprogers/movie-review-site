@@ -2,7 +2,6 @@ import React from 'react';
 
 const MovieReviewTile = props => {
   let imageSrc
-  console.log(props.review)
   if (props.review.movie.poster) {
     imageSrc = props.review.movie.poster.thumb.url;
   }
